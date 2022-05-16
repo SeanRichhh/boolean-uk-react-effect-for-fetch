@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react"
+import ArtList from "../Art/components/ArtList"
 
-function ArtsSection() {
+function ArtsSection (){
+
   return (
-    <section>
-      <h2>Arts Section</h2>
-      <div className="scroll-container"></div>
-    </section>
-  )
+     <section>
+       <ArtList/>
+        </section>
+    )
+
 }
 
 export default ArtsSection
+
