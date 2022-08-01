@@ -1,32 +1,14 @@
-import { useEffect, useState } from "react";
 
-import UsersListItem from "./UsersListItem";
-
-function UsersList() {
-  
-    const [user, setUser] = useState([])
-
-    // useEffect(() => {
-    //     fetch(``)
-    //     .then(res => res.json())
-    //     .then(interface => setUser(interface))
-    // }, [])
-  
-    return (
-        <section>
-            <h2>User Section</h2>
-            <div className="scroll-container">
-            <ul className="art-list">
-                {user.map((users, index) =>
-                    <UsersListItem 
-                        index={index}
-                        users={users}
-                    />
-                )}
-            </ul>
-            </div>
-        </section>
-    ) 
+function UsersList({user,id}) {
+    return(
+     <li key={id} className={user.gender === "male" ? "bg-blue" : "bg-pink"}>
+      <img src={user.picture.medium} alt="user photo" />
+      <h3>
+        {user.name.title} {user.name.first} {user.name.last}
+      </h3>
+      <p>Email: {user.email}</p>
+    </li>
+    )
 }
 
 export default UsersList;
