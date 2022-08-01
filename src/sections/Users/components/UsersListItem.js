@@ -1,12 +1,12 @@
 
-function UserListItem({index,user}){
+function UserListItem({index,users}){
     return(
     <li className="bg-blue" key={index}>
        <img
        src ={``}
-       alt={user.title}/>
-       <h3>{user.title}</h3>
-       <p>Email:{user.email}</p>
+       alt={users.title}/>
+       <h3>{users.title}</h3>
+       <p>Email:{users.email}</p>
     </li>
         )
 }

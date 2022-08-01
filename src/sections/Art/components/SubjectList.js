@@ -1,7 +1,6 @@
-function SubjectList(){
+function SubjectList({subjectTitle}){
     return(
-        <div>
-        </div>
+        <li>{subjectTitle}</li>
     )
 
 }

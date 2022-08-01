@@ -1,33 +1,26 @@
-import { useEffect, useState } from "react"
+import SubjectList from './SubjectList'
 
-import ArtListItem from "./ArtListItem"
-
-function ArtList(){
-    const [artworks, setArtworks] = useState([])
-  
-  useEffect(() => {
-    fetch(`https://api.artic.edu/api/v1/artworks?fields=title,artist_title,image_id,classification_titles`)
-    .then(res => res.json())
-    .then(art => setArtworks(art.data))
-  }, [] )
-
-
-  return (
-     <section>
-            <h2>Arts Section</h2>
-            <div className="scroll-container">
-            <ul className="art-list">
-                {artworks.map((artwork, index) =>
-                    <ArtListItem 
-                        index={index}
-                        artwork={artwork}
-                    />
-                )}
-            </ul>
-            </div>
-        </section>
-    )
+function ArtList({art, id}){
+    return (
+        <li key={id}>
+          <div class="frame">
+            <img
+              src={`https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`}
+              alt={art.artwork}
+            />
+          </div>
+          <h3>{art.title}</h3>
+          <p>Artist: {art.artist_title}</p>
+          <h4>Artistic Subjects:</h4>
+          <ul>
+            {art.subject_titles.map((subjectTitle, id) => (
+              <SubjectList subect={subjectTitle} key={id}/>
+            ))}
+          </ul>
+        </li>
+      )
 }
+
 
 
 export default ArtList
